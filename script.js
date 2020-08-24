@@ -4,6 +4,8 @@ const svg = d3
   .attr("width", 600)
   .attr("height", 600);
 
+const t = d3.transition().duration(1000);
+
 // Creating margins and dimensions
 const margin = {
   top: 20,
@@ -60,10 +62,8 @@ const update = (data) => {
   // 4. Update current shapes in DOM
   rects
     .attr("width", x.bandwidth)
-    .attr("height", (d) => graphHeight - y(d.orders))
     .attr("fill", "crimson")
-    .attr("x", (d) => x(d.name))
-    .attr("y", (d) => y(d.orders));
+    .attr("x", (d) => x(d.name));
 
   // 5. Append items from enter selection
   rects
@@ -74,8 +74,8 @@ const update = (data) => {
     .attr("x", (d) => x(d.name))
     .attr("height", 0)
     .attr("y", graphHeight)
-    .transition()
-    .duration(1500)
+    .merge(rects)
+    .transition(t)
     .attr("height", (d) => graphHeight - y(d.orders))
     .attr("y", (d) => y(d.orders));
 
