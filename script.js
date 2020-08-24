@@ -70,9 +70,13 @@ const update = (data) => {
     .enter()
     .append("rect")
     .attr("width", x.bandwidth)
-    .attr("height", (d) => graphHeight - y(d.orders))
     .attr("fill", "crimson")
     .attr("x", (d) => x(d.name))
+    .attr("height", 0)
+    .attr("y", graphHeight)
+    .transition()
+    .duration(1500)
+    .attr("height", (d) => graphHeight - y(d.orders))
     .attr("y", (d) => y(d.orders));
 
   // Call the axes
