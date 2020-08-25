@@ -6,7 +6,7 @@
 
 > This repository constitutes to visualizing and rendering using D3.js and Firebase for storing and retrieving the data in real-time.
 
-# 🏠 [Adding D3.js]
+## 🏠 [Adding D3.js]
 
 Add the following **CDN** at the end of the <body> in **index.html**
 
@@ -14,7 +14,7 @@ Add the following **CDN** at the end of the <body> in **index.html**
 <script src="https://d3js.org/d3.v5.js"></script>
 ```
 
-# 🪁 [Adding Firebase]
+## 🪁 [Adding Firebase]
 
 Get the below code from console.firebase.google.com and check out, Adding this project to web app
 
@@ -40,13 +40,13 @@ Get the below code from console.firebase.google.com and check out, Adding this p
 </script>
 ```
 
-# ✏️ [Canvas container]
+## ✏️ [Canvas container]
 
 ```html
 <div class="canvas"></div>
 ```
 
-## [Selecting the canvas and appending svg and attributes]
+## Selecting the canvas and appending svg and attributes
 
 ```javascript
 const svg = d3
@@ -56,7 +56,7 @@ const svg = d3
   .attr("height", 600);
 ```
 
-## [Margins and Dimensions of graph]
+## Margins and Dimensions of graph
 
 ```javascript
 const margin = {
@@ -70,7 +70,7 @@ const graphWidth = 600 - margin.left - margin.right;
 const graphHeight = 600 - margin.top - margin.bottom;
 ```
 
-## [Using the above dimensions by applying them to graph]
+## Using the above dimensions by applying them to graph
 
 ```javascript
 const graph = svg
