@@ -6,7 +6,7 @@
 
 > This repository constitutes to visualizing and rendering using D3.js and Firebase for storing and retrieving the data in real-time.
 
-## 🏠 [Adding D3.js]
+# 🏠 [Adding D3.js]
 
 Add the following **CDN** at the end of the <body> in **index.html**
 
@@ -14,7 +14,7 @@ Add the following **CDN** at the end of the <body> in **index.html**
 <script src="https://d3js.org/d3.v5.js"></script>
 ```
 
-## 🪁 [Adding Firebase]
+# 🪁 [Adding Firebase]
 
 Get the below code from console.firebase.google.com and check out, Adding this project to web app
 
@@ -40,7 +40,7 @@ Get the below code from console.firebase.google.com and check out, Adding this p
 </script>
 ```
 
-## ✏️ [Canvas container]
+# ✏️ [Canvas container]
 
 ```html
 <div class="canvas"></div>
