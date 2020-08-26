@@ -6,7 +6,7 @@
 
 > This repository constitutes to visualizing and rendering using D3.js and Firebase for storing and retrieving the data in real-time.
 
-## 🏠 [Adding D3.js]
+## Getting Started 🚀
 
 Add the following **CDN** at the end of the <body> in **index.html**
 
@@ -14,7 +14,7 @@ Add the following **CDN** at the end of the <body> in **index.html**
 <script src="https://d3js.org/d3.v5.js"></script>
 ```
 
-## 🪁 [Adding Firebase]
+## Firebase CDN
 
 Get the below code from console.firebase.google.com and check out, Adding this project to web app
 
@@ -40,13 +40,15 @@ Get the below code from console.firebase.google.com and check out, Adding this p
 </script>
 ```
 
-## ✏️ [Canvas container]
+## Canvas container ✏️
 
 ```html
 <div class="canvas"></div>
 ```
 
-## Selecting the canvas and appending svg and attributes
+## Drawing Shapes (Bar graph) 🖍️
+
+### 1. Selecting the canvas container and appending our base SVG element to it
 
 ```javascript
 const svg = d3
