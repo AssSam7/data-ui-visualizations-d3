@@ -62,7 +62,7 @@ const update = (data) => {
   // 4. Update current shapes in DOM
   rects
     .attr("width", x.bandwidth)
-    .attr("fill", "crimson")
+    .attr("fill", "#74b9ff")
     .attr("x", (d) => x(d.name));
 
   // 5. Append items from enter selection
@@ -70,7 +70,7 @@ const update = (data) => {
     .enter()
     .append("rect")
     .attr("width", x.bandwidth)
-    .attr("fill", "crimson")
+    .attr("fill", "#74b9ff")
     .attr("x", (d) => x(d.name))
     .attr("height", 0)
     .attr("y", graphHeight)
@@ -85,7 +85,7 @@ const update = (data) => {
 
   xAxisGroup
     .selectAll("text")
-    .attr("fill", "crimson")
+    .attr("fill", "#0984e3")
     .attr("transform", "rotate(-40)")
     .attr("text-anchor", "end");
 };

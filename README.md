@@ -143,3 +143,116 @@ Linear scale can be created by **d3.scaleLinear()**
 ```javascript
 const y = d3.scaleLinear().range([graphHeight, 0]);
 ```
+
+## Listening for real-time data updates from firebase
+
+Firebase (Firestore) provides a method known as **onSnapshot()** to listen for real-time updates on any particular collection in the firestore. This method accepts a call-back as an argument with **res** as its parameter.
+
+1. Apply this method on our collection where the data is stored
+2. There are 3 cases of data alteration in firestore
+   a. **Added**: When a new document is added to the collection.
+   b. **Modified**: When a existing document properties are altered or new properties are added to an existing document.
+   c. **Deleted**: When an existing document is deleted.
+
+```javascript
+let data = [];
+
+db.collection("dishes").onSnapshot((res) => {
+  res.docChanges().forEach((change) => {
+    const doc = { ...change.doc.data(), id: change.doc.id };
+
+    switch (change.type) {
+      case "added":
+        data.push(doc);
+        break;
+      case "modified":
+        const index = data.findIndex((item) => item.id == doc.id);
+        data[index] = doc;
+        break;
+      case "removed":
+        data = data.filter((item) => item.id !== doc.id);
+        break;
+      default:
+        break;
+    }
+  });
+
+  update(data);
+});
+```
+
+## Update method for binding visualization based on data
+
+### 1. Declaring the update method
+
+```javascript
+const update = (data) => {
+  ...
+};
+```
+
+### 2. Updating linear and band scale domains on data update
+
+```javascript
+y.domain([0, d3.max(data, (d) => d.orders)]);
+x.domain(data.map((item) => item.name));
+```
+
+### 3. Joining data to shapes
+
+```javascript
+const rects = graph.selectAll("rect").data(data);
+```
+
+### 4. Removing elements from the Exit selection
+
+**Exit Selection:** The selection of elements for which the data doesn't exist to bind.
+**Ex:** Suppose we're getting **4** objects of data from the back-end, previously **5** were there so one shape's data got deleted internally. Hence, that shape should exit from the visualization. **D3** determines automatically the exit selection elements based on the joined data.
+
+```javascript
+rects.exit().remove();
+```
+
+### 5. Update current shapes in DOM
+
+```javascript
+rects
+  .attr("width", x.bandwidth)
+  .attr("fill", "crimson")
+  .attr("x", (d) => x(d.name));
+```
+
+### 6. Append items from enter selection (if new data comes)
+
+```javascript
+rects
+  .enter()
+  .append("rect")
+  .attr("width", x.bandwidth)
+  .attr("fill", "crimson")
+  .attr("x", (d) => x(d.name))
+  .attr("height", 0)
+  .attr("y", graphHeight);
+```
+
+## Adding transition (Smooth rendering)
+
+### 1. Storing the transition in a variable, to re-use
+
+```javascript
+const t = d3.transition().duration(1000);
+```
+
+### 2. Applying the transition
+
+```javascript
+.transition(t)
+    .attr("height", (d) => graphHeight - y(d.orders))
+    .attr("y", (d) => y(d.orders));
+```
+
+## Author ✨
+
+- Twitter : [@malsaslam97](https://twitter.com/malsaslam97)
+- Github: [@AssSam7](https://github.com/AssSam7)
+- LinkedIn: [Aslam Mohammed](https://www.linkedin.com/in/malsaslam97/)
