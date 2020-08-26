@@ -185,7 +185,7 @@ db.collection("dishes").onSnapshot((res) => {
 });
 ```
 
-## Update method for binding visualization based on data
+## Update method for binding visualizations based on data
 
 ### 1. Declaring the update method
 
