@@ -154,9 +154,9 @@ Firebase (Firestore) provides a method known as **onSnapshot()** to listen for r
 
 1. Apply this method on our collection where the data is stored
 2. There are 3 cases of data alteration in firestore
-   a. **Added**: When a new document is added to the collection.
-   b. **Modified**: When a existing document properties are altered or new properties are added to an existing document.
-   c. **Deleted**: When an existing document is deleted.
+   - **Added**: When a new document is added to the collection.
+   - **Modified**: When a existing document properties are altered or new properties are added to an existing document.
+   - **Deleted**: When an existing document is deleted.
 
 ```javascript
 let data = [];
