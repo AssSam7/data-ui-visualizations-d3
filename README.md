@@ -14,7 +14,7 @@ https://keen-minsky-e0571f.netlify.app/
 
 ### 1. D3.js CDN
 
-Add the following **CDN** at the end of the <body> in **index.html**
+Add the following **CDN** at the end of the **body** in the **index.html**
 
 ```html
 <script src="https://d3js.org/d3.v5.js"></script>
